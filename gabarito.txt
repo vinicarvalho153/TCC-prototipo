@@ -1,0 +1,53 @@
+GABARITO - TESTE 1 (Sistema de Cadastro)
+9 erros propositalmente inseridos:
+
+ERRO 1 - Linha 12: Função desativar_usuario não retorna valor, mas o chamador pode verificar o retorno esperando True/False. Erro de design/contrato de função.
+
+ERRO 2 - Linha 20: Comparação com == True em vez de apenas dados["ativo"]. Má prática que pode causar comportamento inesperado com valores truthy/falsy.
+
+ERRO 3 - Linha 27: ZeroDivisionError se o dicionário usuarios estiver vazio ao chamar calcular_media_idades().
+
+ERRO 4 - Linha 38: Função promover_usuario acessa usuario["ativo"] sem verificar se buscar_usuario retornou None. Causa AttributeError/TypeError.
+
+ERRO 5 - Linha 44: Uso de if/if em vez de if/elif na contagem por faixa etária. Usuários com idade == 18 são contados em ambas as categorias (jovens e adultos).
+
+ERRO 6 - Linha 53: Usa == (comparação) em vez de = (atribuição) para atualizar o email. O dado nunca é atualizado.
+
+ERRO 7 - Linha 58: Concatenação de string com inteiro (dados["idade"] é int). Causa TypeError em tempo de execução.
+
+ERRO 8 - Linha 72: Se nivel_requerido não estiver na lista niveis, lança ValueError. Ausência de tratamento de erro.
+
+ERRO 9 - Linha 77: Senha armazenada e comparada em texto puro. Vulnerabilidade de segurança (deveria usar hash).
+
+---
+
+GABARITO - TESTE 2 (Sistema de Notas)
+14 erros propositalmente inseridos:
+
+ERRO 1 - Linha 22: Não verifica se aluno é None antes de acessar aluno["notas"], e não verifica se a lista de notas está vazia (ZeroDivisionError).
+
+ERRO 2 - Linha 35: Inicializa maior_media com 0. Se a turma estiver vazia, retorna None sem aviso. Se todas as médias forem 0, retorna None incorretamente.
+
+ERRO 3 - Linha 43: Acessa aluno["media"] sem garantir que processar_turma foi chamado antes. Causa KeyError.
+
+ERRO 4 - Linha 49: KeyError se processar_turma não foi chamado antes de calcular_media_turma.
+
+ERRO 5 - Linha 54: Verifica apenas dados["aprovado"] == False, ignorando alunos em recuperação (valor "Recuperação"). Contagem incorreta de reprovados.
+
+ERRO 6 - Linha 60: Adiciona pontos extras em TODAS as notas do aluno em vez de apenas na menor nota.
+
+ERRO 7 - Linha 67: Retorna turma2 mesmo quando as médias são iguais, sem tratar o caso de empate.
+
+ERRO 8 - Linha 73: join() espera uma lista de strings, mas notas são floats. Causa TypeError.
+
+ERRO 9 - Linha 80: Assume que o aluno sempre é encontrado em alguma turma. Se não encontrado, IndexError ao acessar encontrados[0].
+
+ERRO 10 - Linha 84: Não verifica se total_aulas é zero antes de dividir. Causa ZeroDivisionError.
+
+ERRO 11 - Linha 96: Usa == (comparação) em vez de = (atribuição). A turma nunca é marcada como inativa.
+
+ERRO 12 - Linha 104: Divide por len(medias) em vez de len(medias)-1. Calcula desvio populacional em vez de desvio amostral. Erro estatístico sutil.
+
+ERRO 13 - Linha 109: "Recuperação" é um valor truthy, então not "Recuperação" é False. Alunos em recuperação não são notificados, mas a intenção era notificar apenas os reprovados (False). Lógica inconsistente.
+
+ERRO 14 - Linha 118: Arquivo aberto sem uso de with statement. Nunca fechado explicitamente, causando vazamento de recurso.
